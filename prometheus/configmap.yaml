@@ -154,3 +154,10 @@ data:
       - source_labels: [__meta_kubernetes_pod_name]
         action: replace
         target_label: kubernetes_pod_name
+    alerting:
+      alertmanagers:
+        - static_configs:
+          - targets: ["localhost:9093"]
+    rule_files:
+         - /home/zach/alertmanager/rules.yml
+
