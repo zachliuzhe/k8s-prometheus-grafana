@@ -1,0 +1,24 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: alertmanager
+  namespace: kube-system
+data:
+  config.yml: |-
+    global:
+      resolve_timeout: 5m
+      smtp_smarthost: 'smtp.163.com:25'
+      smtp_from: '18800237395@163.com'
+      smtp_auth_username: '18800237395@163.com'
+      smtp_auth_password: 'liu123456789'
+      smtp_require_tls: false
+    route:
+      group_by: [alertname]
+      group_wait: 10s
+      group_interval: 60s
+      repeat_interval: 10m
+      receiver: default-receiver
+    receivers:
+    - name: 'default-receiver'
+      email_configs:
+      - to: '1525223351@qq.com'
