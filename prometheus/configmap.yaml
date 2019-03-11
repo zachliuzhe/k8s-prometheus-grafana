@@ -6,20 +6,20 @@ metadata:
 data:
   prometheus.yml: |
     global:
-      scrape_interval:     15s
-      evaluation_interval: 15s
-    rule_files:
+      scrape_interval:     15s                #设定抓取数据的周期，默认为1min  
+      evaluation_interval: 15s                #设定更新rules文件的周期，默认为1min
+    rule_files:                               #rule配置，首次读取默认加载，之后根据evaluation_interval设定的周期加载
     - /etc/prometheus/rules.yml
 
     alerting:
       alertmanagers:
         - static_configs:
-          - targets: ["172.168.1.53:30029"]
+          - targets: ["172.168.1.53:30029"]   #设定alertmanager和prometheus交互的接口，即alertmanager监听的ip地址和端口
 
-    scrape_configs:
+    scrape_configs:                           
     - job_name: 'prometheus'
-      static_configs:
-        - targets: ['localhost:9090']
+      static_configs:                         #静态配置
+        - targets: ['localhost:9090']         #prometheus所要抓取数据的地址，即instance实例项
 
     - job_name: 'kubernetes-apiservers'
       kubernetes_sd_configs:
