@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    app: alertmanager
+  name: alertmanager
+  namespace: kube-system
+spec:
+  type: NodePort
+  ports:
+  - port: 9093
+    targetPort: 9093
+    nodePort: 30029
+  selector:
+    app: alertmanager
