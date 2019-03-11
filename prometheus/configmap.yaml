@@ -14,7 +14,7 @@ data:
     alerting:
       alertmanagers:
         - static_configs:
-          - targets: ["47.101.43.157:30029"]
+          - targets: ["172.168.1.53:30029"]
 
     scrape_configs:
     - job_name: 'prometheus'
