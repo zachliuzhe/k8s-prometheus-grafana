@@ -7,18 +7,18 @@ data:
   config.yml: |-
     global:
       resolve_timeout: 5m
-      smtp_smarthost: 'smtp.163.com:25'
-      smtp_from: '18800237395@163.com'
-      smtp_auth_username: '18800237395@163.com'
-      smtp_auth_password: 'liu123456789'
+      smtp_smarthost: 'smtp.163.com:25'              #sina服务器
+      smtp_from: '18800237395@163.com'               #发邮件的邮箱
+      smtp_auth_username: '18800237395@163.com'      #发邮件的邮箱用户名，也就是你的邮箱
+      smtp_auth_password: 'liu123456789'             #发邮件的邮箱密码,或者客户端授权码
       smtp_require_tls: false
     route:
       group_by: [alertname]
-      group_wait: 10s
-      group_interval: 60s
-      repeat_interval: 10m
+      group_wait: 10s                                #组报警等待时间
+      group_interval: 60s                            #组报警间隔时间
+      repeat_interval: 10m                           #重复报警间隔时间
       receiver: default-receiver
     receivers:
     - name: 'default-receiver'
       email_configs:
-      - to: '1525223351@qq.com'
+      - to: '1525223351@qq.com'                      #收邮件的邮箱 
