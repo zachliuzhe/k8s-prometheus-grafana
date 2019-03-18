@@ -195,7 +195,7 @@ data:
            summary: "{{$labels.instance}}: High CPU usage detected"
            description: "{{$labels.instance}}: CPU usage is above 80% (current value is: {{ $value }}"
        - alert: InstanceDown
-         expr: up == 1
+         expr: up == 0
          for: 5s
          labels:
            severity: page
